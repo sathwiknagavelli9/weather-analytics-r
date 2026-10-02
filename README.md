@@ -2,6 +2,8 @@
 
 **Real-Time Weather Analytics & Prediction Dashboard using R**
 
+[**Open the live dashboard**](https://sathwik-nagavelli.shinyapps.io/weather-analytics-r/) · [**GitHub repository**](https://github.com/sathwiknagavelli9/weather-analytics-r)
+
 WeatherPulse is an interactive R/Shiny college project that turns real Open-Meteo weather data into current-condition summaries, historical analytics, city comparisons, and an educational statistical temperature prediction. Hyderabad, India is the initial city; users can search for locations worldwide.
 
 The academic project title is **Real-Time Weather Analytics and Prediction Dashboard using R**.
@@ -143,7 +145,7 @@ The dependency installer checks existing packages, prefers Windows binaries, and
 
 `scripts/smoke_test.R` checks package availability and makes real weather requests before exercising historical processing and the statistical model. It needs internet access. A service interruption can fail this integration check even when the offline tests pass.
 
-During development, **all offline tests passed**, including the Shiny server integration tests. The real-data smoke test also passed with the measured results above. A separately launched local Shiny process returned **HTTP 200 with HTML**, and its CSS asset returned **HTTP 200**. These establish tested server behavior, local startup, and real-data integration; published-service verification is a separate step.
+During development, **all offline tests passed**, including the Shiny server integration tests. The real-data smoke test also passed with the measured results above. A separately launched local Shiny process returned **HTTP 200 with HTML**, and its CSS asset returned **HTTP 200**.
 
 Interactive local browser checks also passed on 2 October 2026:
 
@@ -153,11 +155,11 @@ Interactive local browser checks also passed on 2 October 2026:
 - Hyderabad, London, and Tokyo loaded in city comparison. A separate London search worked, and an unknown-city search displayed a friendly notification while retaining London's loaded result.
 - At 1280-pixel desktop and 390-pixel mobile widths, the page had no horizontal overflow. Mobile navigation worked, and the location sidebar could be opened and collapsed.
 
-These are local verification results. Publication and public-host checks are recorded separately after deployment.
+The public GitHub repository was pushed successfully on branch `main`, and shinyapps.io deployment completed successfully on 2 October 2026. The public application returned **HTTP 200 with HTML**. A hosted browser session loaded Hyderabad's current conditions, seven forecast days and charts, and 90 historical days with summaries, a table, and three charts. It completed **Train & evaluate model** with 286 training rows, 72 test rows, the 2 October target, and metrics consistent with the measured smoke-test result. Hosted logs confirmed startup under R 4.5.1 with no runtime errors in the inspected output, and the checked browser console contained no errors. These checks confirm that the deployed R application can reach Open-Meteo and execute its model.
 
 ## Screenshots
 
-Captured from the running local application on 2 October 2026. Weather values reflect the capture time.
+Captured from the running application on 2 October 2026. Weather values reflect the capture time. The images below show local verification; the [hosted overview](docs/screenshots/live-overview.jpg) and [hosted prediction](docs/screenshots/live-prediction.jpg) screenshots record the verified public deployment.
 
 **Overview — Hyderabad current conditions and forecast**
 
@@ -177,7 +179,7 @@ The deployment script uses the existing local rsconnect account configuration. I
 Rscript scripts/deploy.R
 ```
 
-The preferred shinyapps.io account is `sathwik-nagavelli`, and the preferred application name is `weather-analytics-r`. The preferred GitHub repository is `sathwiknagavelli9/weather-analytics-r`. These identifiers describe deployment targets; availability must be verified after publishing.
+The published application runs under shinyapps.io account `sathwik-nagavelli` with app name `weather-analytics-r`. Its [public dashboard](https://sathwik-nagavelli.shinyapps.io/weather-analytics-r/) and real-data model execution were verified on 2 October 2026. The source is available in the public [sathwiknagavelli9/weather-analytics-r repository](https://github.com/sathwiknagavelli9/weather-analytics-r) on branch `main`.
 
 The deployment bundle includes only `app.R`, the R modules, and `www/` assets. Documentation, screenshots, test fixtures, temporary results, and local account configuration are excluded. The optional `WEATHERPULSE_APP_NAME` environment variable selects a different app name for an intentional alternate deployment.
 

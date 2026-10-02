@@ -6,6 +6,10 @@
 
 **Primary data provider:** Open-Meteo
 
+**Live application:** [WeatherPulse on shinyapps.io](https://sathwik-nagavelli.shinyapps.io/weather-analytics-r/)
+
+**Source repository:** [sathwiknagavelli9/weather-analytics-r](https://github.com/sathwiknagavelli9/weather-analytics-r)
+
 ## Abstract
 
 WeatherPulse is an interactive application for exploring current weather, short-range forecasts, historical patterns, and an educational next-day mean-temperature model. It is implemented in R using Shiny, bslib, ggplot2, curl, and jsonlite, with deployment supported by rsconnect and shinyapps.io. Public Open-Meteo services supply real location and weather data without an application API key. The system demonstrates the full analytics lifecycle: acquisition, validation, cleaning, feature construction, exploratory analysis, model fitting, evaluation, visualization, and user interaction. A base R linear regression uses recent temperature history and seasonal features. Its performance is assessed with a chronological holdout and reported through MAE, RMSE, and R² when valid. In-memory caching and explicit action buttons reduce avoidable network and computation costs. The project is designed for academic demonstration and does not claim meteorological-grade prediction or distributed large-scale processing.
@@ -265,7 +269,11 @@ Local browser verification on 2 October 2026 confirmed the initial Hyderabad res
 
 Responsive checks at 1280-pixel desktop and 390-pixel mobile widths found no page-level horizontal overflow. Mobile navigation worked, and the location sidebar could be opened and collapsed. Captured evidence is available in the [overview screenshot](screenshots/overview.jpg), [prediction screenshot](screenshots/prediction.jpg), and [mobile screenshot](screenshots/mobile.jpg).
 
-These results establish local startup, tested server behavior, real-data integration, and browser workflows. Public-host verification remains a separate check after publication.
+The source was pushed to the public [GitHub repository](https://github.com/sathwiknagavelli9/weather-analytics-r) on branch `main`, and rsconnect completed deployment to the [public shinyapps.io application](https://sathwik-nagavelli.shinyapps.io/weather-analytics-r/) on 2 October 2026. The hosting service reported the application running. A public HTTP request returned status 200 and a 36,690-byte HTML response.
+
+Hosted browser verification then confirmed real Open-Meteo access: Hyderabad displayed 29.2 °C with a provider-local weather time of 20:00 and a retrieval time of 20:07 IST on 2 October. Seven daily forecast rows and their charts rendered. Historical Analytics loaded the 90-day archive period from 29 June through 26 September 2026, with summaries, its table, and all three charts. The hosted **Train & evaluate model** action completed with 286 training rows and 72 test rows, a 2 October target, a displayed estimate of 28.8 °C, MAE 0.70 °C, RMSE 0.91 °C, and R² 0.461. These rounded values agree with the measured smoke-test snapshot. Inspected hosted logs confirmed successful Shiny startup under R 4.5.1 without runtime errors, and the checked browser console contained no errors. The [hosted overview](screenshots/live-overview.jpg) and [hosted prediction](screenshots/live-prediction.jpg) screenshots record the public application.
+
+The local browser checks cover the broader interaction set listed above; the public checks independently establish deployment, HTTP access, current and forecast acquisition, historical archive analytics, and execution of the R model on the hosted runtime.
 
 ### 18.3 Reproducibility limits
 

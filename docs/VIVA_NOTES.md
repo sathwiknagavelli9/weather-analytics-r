@@ -100,7 +100,7 @@ Caching lets repeated requests reuse recently fetched data, reducing latency and
 
 Base R tests check parsing, transformations, features, metrics, and defensive cases. Shiny's `testServer()` tests the reactive server and actual CSV handler with deterministic service substitutes. A smoke test uses real Open-Meteo requests. Local HTTP checks and browser checks cover startup and visible interactions. rsconnect publishes the app to shinyapps.io using existing local authentication; source control must contain no authentication secrets. A deployment is verified by checking its public app and data access after publishing.
 
-The local checks passed, including a browser-downloaded 90-row CSV, city search and comparison, model execution, unknown-city recovery, and desktop/mobile layouts. Public-host checks are distinct from these local results.
+The local checks passed, including a browser-downloaded 90-row CSV, city search and comparison, model execution, unknown-city recovery, and desktop/mobile layouts. The source was pushed to the public [GitHub repository](https://github.com/sathwiknagavelli9/weather-analytics-r), and the [hosted application](https://sathwik-nagavelli.shinyapps.io/weather-analytics-r/) was verified on 2 October 2026 with HTTP 200, real current/forecast data, and successful R model execution.
 
 ## 25. What are the limitations and possible improvements?
 
